@@ -2,10 +2,13 @@ function LinkedList () {
   
   var Node = function (element) {
     this.element = element
+    // 保存指向下个元素的引用，默认为null
     this.next = null
   }
 
+  // 链表长度
   var length = 0
+  // head保存指向第一个元素的引用
   var head = null
 
   this.append = function (element) {
@@ -13,13 +16,14 @@ function LinkedList () {
     var node = new Node(element),
         current
 
-    // 将列表中第一个节点保存到head中
-    if (head === null) {
+    if (head === null) { // 当链表为空时
+      // 将head指向新增的元素
       head = node
-    } else {
+    } else { // 链表不为空
+      // 使用一个current变量从head开始迭代链表
       current = head
 
-      // 循环列表，直到找到最后一项
+      // 迭代链表，直到找到最后一项
       while (current.next) {
         current = current.next
       }
@@ -39,7 +43,7 @@ function LinkedList () {
           previous,
           index = 0
 
-      // 如果删除第一个元素，把head指向下一个元素就行了
+      // 如果删除了第一个元素，把head指向下一个元素就行了
       if (position === 0) {
         head = current.next
       } else {
@@ -95,6 +99,7 @@ function LinkedList () {
     }
   }
 
+  // 返回所有元素的值转成字符串
   this.toString = function () {
     var current = head,
         string = ''
@@ -107,6 +112,7 @@ function LinkedList () {
     return string
   }
 
+  // 查找元素在链表中的位置
   this.indexOf = function (element) {
     var current = head,
         index = 0
@@ -122,121 +128,33 @@ function LinkedList () {
     return -1
   }
 
+  // 移除特定元素
   this.remove = function (element) {
     var index = this.indexOf(element)
     return this.removeAt(index)
   }
 
+  // 判断链表是否为空
   this.isEmpty = function () {
     return length === 0
   }
 
+  // 返回链表长度
   this.size = function () {
     return length
   }
 
+  // 返回第一个元素
   this.getHead = function () {
     return head
   }
 }
 
-var list = new LinkedList()
+// 一些操作
+// var list = new LinkedList()
 
-list.append(15)
-list.append(10)
-
-console.log(list)
-
-// 双向链表
-function DoubleLinkedList () {
-  var Node = function (element) {
-    this.element = element
-    this.prev = null
-    this.next = null
-  }
-
-  var length = 0
-  var head = null
-  var tail = null
-
-  this.insert = function (position, element) {
-    // 检查是否越界
-    if (position >= 0 && position <= length) {
-      var node = new Node(element),
-          current = head,
-          previous,
-          index = 0
-
-      if (position === 0) { // 第一个元素的位置插入
-        // 如果链表为空
-        if (!head) {
-          head = node
-          tail = node
-        } else {
-          node.next = current
-          current.prev = node
-          head = node
-        }
-      } else if (position === length) { // 在最后一个元素插入
-        current = tail
-        node.prev = current
-        current.next = node
-        tail = node
-      } else { // 在中间插入
-        while (index++ < position) {
-          previous = current
-          current = current.next
-        }
-
-        node.next = current
-        previous.next = node
-
-        current.prev = node
-        node.prev = previous
-      }
-
-      length++
-
-      return true
-    } else {
-      return false
-    }
-  }
-
-  this.removeAt = function (position) {
-    // 检查是否越界
-    if (position > -1 && position < length) {
-      var current = head,
-          previous,
-          index = 0
-
-      if (position === 0) { // 第一个元素
-        head = current.next
-        // 如果只有一项
-        if (length === 1) {
-          tail = null
-        } else {
-          head.prev = null
-        }
-      } else if (position === length - 1) { // 最后一个元素
-        current = tail
-        tail = current.prev
-        tail.next = null
-      } else {
-        while (index++ < position) {
-          previous = current
-          current = current.next
-        }
-
-        previous.next = current.next
-        current.next.prev = previous
-      }
-
-      length--
-
-      return current.element
-    } else {
-      return null
-    }
-  }
-}
+// console.log(list.indexOf(10))
+// list.insert(0, 20)
+// list.append(33)
+// console.log(list.getHead())
+// console.log(list.toString())
