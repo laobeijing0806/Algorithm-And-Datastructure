@@ -158,3 +158,5 @@ function LinkedList () {
 // list.append(33)
 // console.log(list.getHead())
 // console.log(list.toString())
+
+module.exports = LinkedList
