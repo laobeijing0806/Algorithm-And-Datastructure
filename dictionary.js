@@ -2,7 +2,8 @@ function Dictionary () {
   var items = {}
 
   this.has = function (key) {
-    return key in items
+    // 书上用的是in操作符来判断，但是in对于继承来的属性也会返回true，所以我换成了这个
+    return items.hasOwnProperty(key)
   }
 
   this.set = function (key, value) {
@@ -21,6 +22,7 @@ function Dictionary () {
     return this.has(key) ? items[key] : undefined 
   }
 
+  // 自己实现的
   // this.values = function () {
   //   var valueArr = []
   //   var keyArr = Object.keys(items)
@@ -57,20 +59,21 @@ function Dictionary () {
   }
 }
 
-var dictionary = new Dictionary()
+// 一些操作
+// var dictionary = new Dictionary()
 
-dictionary.set('A', '1')
-dictionary.set('B', '2')
-dictionary.set('C', '3')
+// dictionary.set('A', '1')
+// dictionary.set('B', '2')
+// dictionary.set('C', '3')
 
-console.log(dictionary.has('A'))
-console.log(dictionary.size())
-console.log(dictionary.keys())
-console.log(dictionary.values())
-console.log(dictionary.get('C'))
+// console.log(dictionary.has('A'))
+// console.log(dictionary.size())
+// console.log(dictionary.keys())
+// console.log(dictionary.values())
+// console.log(dictionary.get('C'))
 
-dictionary.remove('B')
+// dictionary.remove('B')
 
-console.log(dictionary.keys())
-console.log(dictionary.values())
-console.log(dictionary.getItems())
+// console.log(dictionary.keys())
+// console.log(dictionary.values())
+// console.log(dictionary.getItems())

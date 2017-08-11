@@ -12,9 +12,12 @@ function HashTable () {
     return hash % 37
   }
 
+  // 通过链表存储的是一个包含键值的对象
   var ValuePair = function (key, value) {
     this.key = key
     this.value = value
+    
+    // 重写toString主要是方便输出查看
     this.toString = function () {
       return '[' + this.key + ' - ' + this.value + ']'
     }
@@ -157,6 +160,7 @@ function HashTable () {
     return undefined
   }
 
+  //　用来输出整个散列表，查看结果用的
   this.print = function () {
     for (var i = 0; i < table.length; i++) {
       if (table[i] !== undefined) {
@@ -180,7 +184,6 @@ hash.put('Sue', 'sue@email.com')
 hash.put('Mindy', 'mindy@email.com')
 hash.put('Paul', 'paul@email.com')
 hash.put('Nathan', 'nathan@email.com')
-
 
 /*
  * 上面Jonathan, Jamie, Sue散列值相同，因此被添加时，后面的值会覆盖前面的值，其他冲突元素也一样。
