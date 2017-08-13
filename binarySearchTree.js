@@ -35,7 +35,7 @@ function BinarySearchTree () {
   }
 
   var inOrderTraverseNode = function (node, callback) {
-    if (node !== null) { // 停止中序遍历的条件
+    if (node !== null) { // 停止递归的条件
       inOrderTraverseNode(node.left, callback)
       callback(node.key)
       inOrderTraverseNode(node.right, callback)
