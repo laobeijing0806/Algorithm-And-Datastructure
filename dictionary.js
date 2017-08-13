@@ -77,3 +77,5 @@ function Dictionary () {
 // console.log(dictionary.keys())
 // console.log(dictionary.values())
 // console.log(dictionary.getItems())
+
+module.exports = Dictionary

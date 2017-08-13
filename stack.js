@@ -97,4 +97,6 @@ function BaseConverter (decNumber, base) {
   return binaryString
 }
 
-console.log(BaseConverter(233, 16))
+// console.log(BaseConverter(233, 16))
+
+module.exports = Stack

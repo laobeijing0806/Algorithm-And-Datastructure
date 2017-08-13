@@ -77,7 +77,7 @@ function PriorityQueue () {
   }
 
   this.dequeue = function () {
-    items.shift()
+    return items.shift()
   }
 
   this.front = function () {
@@ -106,31 +106,33 @@ function PriorityQueue () {
 // priorityQueue.print()
 
 // 击鼓传花游戏
-function hotPotato (nameList, num) {
-  var queue = new Queue()
+// function hotPotato (nameList, num) {
+//   var queue = new Queue()
 
-  // 参与者的名字入列
-  for (var i = 0; i < nameList.length; i++) {
-    queue.enqueue(nameList[i])
-  }
+//   // 参与者的名字入列
+//   for (var i = 0; i < nameList.length; i++) {
+//     queue.enqueue(nameList[i])
+//   }
 
-  var eliminated = ''
+//   var eliminated = ''
 
-  // 队列中的最后一个人为胜者
-  while (queue.size() > 1) {
-    // 按设定的击鼓次数，每个人都从队列头部出列转到队列尾部（模拟传花）
-    for (var i = 0; i < num; i++) {
-      queue.enqueue(queue.dequeue())
-    }
-    // 到了规定次数后，在队列头部的人（相当于拿到花）被淘汰
-    eliminated = queue.dequeue()
-    console.log(eliminated + '在击鼓传花游戏中被淘汰')
-  }
+//   // 队列中的最后一个人为胜者
+//   while (queue.size() > 1) {
+//     // 按设定的击鼓次数，每个人都从队列头部出列转到队列尾部（模拟传花）
+//     for (var i = 0; i < num; i++) {
+//       queue.enqueue(queue.dequeue())
+//     }
+//     // 到了规定次数后，在队列头部的人（相当于拿到花）被淘汰
+//     eliminated = queue.dequeue()
+//     console.log(eliminated + '在击鼓传花游戏中被淘汰')
+//   }
 
-  // 胜者出列并被返回
-  return queue.dequeue()
-}
+//   // 胜者出列并被返回
+//   return queue.dequeue()
+// }
 
-var names = ['John', 'Jack', 'Camila', 'Ingrid', 'Carl']
-var winner = hotPotato(names, 7)
-console.log('胜利者：' + winner)
+// var names = ['John', 'Jack', 'Camila', 'Ingrid', 'Carl']
+// var winner = hotPotato(names, 7)
+// console.log('胜利者：' + winner)
+
+module.exports = Queue
