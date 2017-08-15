@@ -48,6 +48,45 @@ function ArrayList () {
     return merge(mergeSortRect(left), mergeSortRect(right))
   }
 
+  var partition = function (array, left, right) {
+    var pivot = array[Math.floor((right + left) / 2)],
+        i = left,
+        j = right
+    
+    while (i <= j) {
+      while (array[i] < pivot) {
+        i++
+      }
+
+      while (array[j] > pivot) {
+        j--
+      }
+      if (i <= j) {
+        var temp = array[i]
+        array[i] = array[j]
+        array[j] = temp
+        i++
+        j--
+      }
+    }
+    return i
+  }
+
+  var quick = function (array, left, right) {
+    var index
+
+    if (array.length > 1) {
+      index = partition(array, left, right)
+
+      if (left < index - 1) {
+        quick(array, left, index - 1)
+      }
+      if (index < right) {
+        quick(array, index, right)
+      }
+    }
+  }
+
   this.insert = function (item) {
     array.push(item)
   }
@@ -86,7 +125,7 @@ function ArrayList () {
         minIndex
     for (var i = 0; i < length - 1; i++) {
       minIndex = i
-      for (var j = i; j < length; j++) {
+      for (var j = i+1; j < length; j++) {
         if (array[i] > array[j]) {
           minIndex = j
         }
@@ -117,6 +156,32 @@ function ArrayList () {
   this.mergeSort = function () {
     array = mergeSortRect(array)
   }
+
+  this.quickSort = function () {
+    quick(array, 0, array.length - 1)
+  }
+
+  this.binarySearch = function (item) {
+    var length = array.length
+    this.quickSort(array)
+
+    var low = 0,
+        high = array.length - 1,
+        middle, element
+    
+    while (low <= high) {
+      middle = Math.floor((low + high) / 2)
+      element = array[middle]
+      if (item > element) {
+        low = middle + 1
+      } else if (item < element) {
+        high = middle - 1
+      } else {
+        return item
+      }
+    }
+    return -1
+  }
 }
 
 function createNonSortedArray (size) {
@@ -127,7 +192,7 @@ function createNonSortedArray (size) {
   return array
 }
 
-var array = createNonSortedArray(5)
-console.log(array.toString())
-array.mergeSort()
-console.log(array.toString())
+var array = createNonSortedArray(50)
+// console.log(array.toString())
+console.log(array.binarySearch(34))
+// console.log(array.toString())

@@ -3,7 +3,9 @@ var Queue = require('./queue')
 var Stack = require('./stack')
 
 function Graph () {
+  // 用于保存顶点
   var vertices = []
+  // 用于表示图
   var adjList = new Dictionary()
 
   // 将所有节点初始化为白色，表示尚未访问
