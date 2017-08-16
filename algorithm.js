@@ -1,3 +1,4 @@
+// 各种排序算法的实现
 function ArrayList () {
   var array = []
 
@@ -5,7 +6,6 @@ function ArrayList () {
     var aux = array[index1]
     array[index1] = array[index2]
     array[index2] = aux
-    console.log(array)
   }
 
   // 归并排序辅助，用于合并排序
@@ -184,6 +184,7 @@ function ArrayList () {
   }
 }
 
+// 为数组插入元素
 function createNonSortedArray (size) {
   var array = new ArrayList()
   for (var i = size; i > 0; i--) {
@@ -191,8 +192,5 @@ function createNonSortedArray (size) {
   }
   return array
 }
-
-var array = createNonSortedArray(50)
-// console.log(array.toString())
-console.log(array.binarySearch(34))
-// console.log(array.toString())
+/* var array = createNonSortedArray(50)
+console.log(array.binarySearch(34)) */
