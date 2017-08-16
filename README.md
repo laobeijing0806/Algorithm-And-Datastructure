@@ -1,4 +1,4 @@
-## 文件结构
+### 文件结构
 
 ```md
 ├── algorithm.js 各种排序算法的实现 
@@ -18,7 +18,7 @@
 
 如有需要可以使用[node-inspector](https://github.com/node-inspector/node-inspector)来单步运行，可以看到一些算法运行的细节
 
-###安装Node Inspector
+### 安装Node Inspector
 
 ```
 $ npm install -g node-inspector
